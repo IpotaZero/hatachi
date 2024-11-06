@@ -140,7 +140,7 @@ const solveCommand = async (command) => {
     else if (commandType === "question") result = await question(args[0])
     else if (commandType === "sleep") await sleep(args[0])
     else if (commandType === "image") await image(args[0])
-    else if (commandType === "bgm") bgm(args[0])
+    else if (commandType === "bgm") await bgm(args[0])
 
     canNext = true
 
@@ -230,14 +230,14 @@ const image = async (path) => {
     })
 }
 
-const bgm = (path) => {
+const bgm = async (path) => {
     if (BGM) BGM.pause()
 
     BGM = new Audio(path)
     BGM.loop = true
     BGM.volume = 0.5
 
-    BGM.play()
+    return BGM.play()
 }
 
 // テキストエリアをクリックで進むようにイベントリスナーを追加
