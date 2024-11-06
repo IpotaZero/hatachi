@@ -110,6 +110,7 @@ const nextText = (result) => {
 
 // テキストを表示
 const solveText = (text) => {
+    canNext = false
     // 文字を徐々に表示する処理
     let index = 0
     intervalId = setInterval(() => {
@@ -120,6 +121,7 @@ const solveText = (text) => {
             else textArea.innerHTML += char
             index++
         } else {
+            canNext = true
             clearInterval(intervalId) // すべて表示したら停止
         }
     }, 16) // 50msごとに1文字表示
