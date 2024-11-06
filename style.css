@@ -1,0 +1,169 @@
+/* 全体のリセットとベース設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  user-select: none;
+}
+
+/* フォントファイルを読み込む */
+@font-face {
+  font-family: 'Tegaki';
+  /* 任意のフォント名 */
+  src: url('./ZenKurenaido-Regular.ttf') format('truetype');
+  /* パスを指定 */
+  font-weight: normal;
+  /* 太さ */
+  font-style: normal;
+  /* スタイル */
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: "Tegaki", "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ゲームコンテナ */
+.game-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  max-height: 800px;
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+}
+
+/* 画像エリア */
+.image-area {
+  width: 100%;
+  height: 70%;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+/* テキストエリア */
+.text-area {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px 10%;
+  border-top: 2px solid #444;
+
+  /* テキスト設定 */
+  font-size: 2em;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+
+  /* アニメーション用 */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .game-container {
+    height: 100vh;
+    max-height: none;
+  }
+
+  .text-area {
+    font-size: 1em;
+    padding: 15px 20px;
+  }
+}
+
+/* ホバーエフェクト */
+.text-area:hover {
+  cursor: pointer;
+}
+
+/* ボタンエリアの設定 */
+.question-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+}
+
+/* 個別のボタン設定 */
+.question-buttons button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  margin: 0 12px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1;
+  /* ボタンの幅を均等に */
+
+  font-family: "Tegaki";
+}
+
+.question-buttons button:hover {
+  background-color: #555;
+}
+
+/* ボタンのアクティブ状態 */
+.question-buttons button.active {
+  background-color: #777;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .question-buttons {
+    flex-wrap: wrap;
+  }
+
+  .question-buttons button {
+    margin: 10px;
+    flex: auto;
+    /* モバイルでは幅を自動に */
+  }
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-1px);
+  }
+
+  50% {
+    transform: translateX(1px);
+  }
+
+  75% {
+    transform: translateX(-1px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.vibrating-image {
+  animation: vibrate 0.6s infinite linear;
+}
