@@ -1,5 +1,6 @@
 // ゲームのシーンデータ
 const scenes = function* () {
+    document.querySelector(".game-container").requestFullscreen()
     yield "(アナザールート)"
     yield "「20歳になる前に」"
     yield ["fadeOut"]
