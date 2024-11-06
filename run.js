@@ -137,7 +137,7 @@ const solveCommand = async (command) => {
     else if (commandType === "fadeIn") await fadeIn()
     else if (commandType === "question") result = await question(args[0])
     else if (commandType === "sleep") await sleep(args[0])
-    else if (commandType === "image") image(args[0])
+    else if (commandType === "image") await image(args[0])
     else if (commandType === "bgm") bgm(args[0])
 
     canNext = true
@@ -218,9 +218,14 @@ const sleep = async (ms) => {
     })
 }
 
-const image = (path) => {
-    const image = document.getElementById("gameImage")
-    image.src = path
+const image = async (path) => {
+    return new Promise((resolve, reject) => {
+        const image = document.getElementById("gameImage")
+        image.onload = () => {
+            resolve()
+        }
+        image.src = path
+    })
 }
 
 const bgm = (path) => {
