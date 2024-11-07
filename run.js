@@ -17,10 +17,10 @@ const scenes = function* () {
     yield ["bgm", "./sounds/天候・荒野の風.mp3"]
     yield ["fadeIn"]
     yield "超高層ビル群の間の僅かな日の光を浴びにベランダへ向かう"
-    yield "放送:;本日の大気中プラスチック濃度は3000μg/m3;外出はお控えください;風向きは--"
+    yield "放送:;本日の大気中プラスチック濃度は300μg/m3;外出はお控えください;風向きは--"
     yield "ビル風が皮膚を切り裂くように吹く"
     yield "高度600m;下を見れば遥か下方でオートマタが躍っている"
-    yield "今日はお父さんと会う日だった"
+    yield "そういえば今日はお父さんと会う日だった"
     yield "エレベータは15分待ち;予約しててよかった"
     yield ["fadeOut"]
     yield ["image", "./images/car.png"]
@@ -49,8 +49,9 @@ const scenes = function* () {
     yield ["fadeIn"]
     yield "共用部分の蛍光灯が切れかけている"
     yield "誰もそんなこと気にしないけど"
-    yield "廊下の隅でオートマタが躍っている"
+    yield "今日も廊下の隅でオートマタが躍っている"
     yield "取っ手を握ると独りでに鍵が開き、電子音声が既に意味を失った挨拶を述べた"
+    yield ["sleep", 2000]
     yield "お母さん:;お帰り〇〇ちゃん"
     yield "お母さん:;ごはん何食べたの?"
     yield ["question", ["ラーメン", "寿司"]]
@@ -61,6 +62,7 @@ const scenes = function* () {
     yield ["image", "./images/my_room.png"]
     BGM.pause()
     yield ["fadeIn"]
+    yield "自分の部屋"
     yield "机から紙の束を取り出す"
     yield "自分の字が紙面をのたくっていた"
     yield "小学2年生の手が私の首を絞め続けている"
@@ -68,7 +70,7 @@ const scenes = function* () {
     yield "今日だと決めたのはその頃だったかなあ"
     yield "飲み干したヒドラが最後の抵抗をする"
     yield "意味もないのに片づけた"
-    yield "椅子に座ってペンを握った"
+    yield "椅子に座ってペンを握る"
     yield ["bgm", "./sounds/シャーペンで字を書く.mp3"]
     yield "「午後9時 入れた」"
     yield "私はこの世界が嫌いなわけじゃない"
@@ -112,6 +114,9 @@ const nextText = (result) => {
 // テキストを表示
 const solveText = (text) => {
     canNext = false
+
+    // textArea.classList.add("flash-triangle")
+
     // 文字を徐々に表示する処理
     let index = 0
     intervalId = setInterval(() => {
@@ -130,6 +135,8 @@ const solveText = (text) => {
 
 // 特殊処理コマンド
 const solveCommand = async (command) => {
+    // textArea.classList.remove("flash-triangle")
+
     const [commandType, ...args] = command
 
     canNext = false

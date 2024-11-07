@@ -5,6 +5,10 @@
   box-sizing: border-box;
 
   user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+  /* 強調をなくす */
+
 }
 
 /* フォントファイルを読み込む */
@@ -74,8 +78,24 @@ body {
   /* アニメーション用 */
   opacity: 1;
   transition: opacity 0.3s ease;
+}
 
+.flash-triangle::after {
+  content: "▼";
+  animation: b 1s infinite steps(1, end);
+}
 
+@keyframes b {
+
+  0%,
+  100% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 0%;
+    ;
+  }
 }
 
 /* レスポンシブ対応 */
