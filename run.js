@@ -28,6 +28,7 @@ const scenes = function* () {
     document.getElementById("gameImage").classList.toggle("vibrating-image")
     yield ["fadeIn"]
     yield "半自動運転車が荒れた道を走る"
+    yield "チャイルドシートが赤く自己主張している"
     yield "お父さん:;..."
     yield "お父さん:;久しぶり、元気か?"
     yield ["question", ["元気", "そこそこ"]]
@@ -76,7 +77,7 @@ const scenes = function* () {
     yield "私はこの世界が嫌いなわけじゃない"
     yield "「午後10時 意識ははっきりしている」"
     yield "だけど生き続けることを想像できなかった"
-    yield "「11時 ふわふわしている」"
+    yield "「午後11時 ふわふわしている」"
     yield "私には難しかった"
     yield "「午後1 私は2時」"
     document.getElementById("gameImage").style.display = "none"
@@ -92,6 +93,7 @@ let BGM
 
 const textArea = document.getElementById("gameText")
 
+// ストーリーを進める
 const nextText = (result) => {
     if (!canNext) return
 
